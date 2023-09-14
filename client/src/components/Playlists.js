@@ -30,7 +30,7 @@ function Playlists() {
     try {
       dispatch(ShowLoading());
       const response = await axios.post(
-        "https://rhythmo-mern-78ccchy9o-prince-arun.vercel.app/api/songs/delete-playlist",
+        "https://green-chiton-hem.cyclic.app/api/songs/delete-playlist",
         {
           name,
         },

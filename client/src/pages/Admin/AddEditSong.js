@@ -36,7 +36,7 @@ function AddEditSong() {
         formData.append(key, song[key]);
       });
       const response = await axios.post(
-        "https://rhythmo-mern-78ccchy9o-prince-arun.vercel.app/api/admin/add-song",
+        "https://green-chiton-hem.cyclic.app/api/admin/add-song",
         formData,
         {
           headers: {
@@ -67,7 +67,7 @@ function AddEditSong() {
       });
       formData.append("_id", songId);
       const response = await axios.post(
-        "https://rhythmo-mern-78ccchy9o-prince-arun.vercel.app/api/admin/edit-song",
+        "https://green-chiton-hem.cyclic.app/api/admin/edit-song",
         formData,
         {
           headers: {
