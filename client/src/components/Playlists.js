@@ -30,7 +30,7 @@ function Playlists() {
     try {
       dispatch(ShowLoading());
       const response = await axios.post(
-        "https://green-chiton-hem.cyclic.app/api/songs/delete-playlist",
+        "https://rhythmo-render-backend.onrender.com/api/songs/delete-playlist",
         {
           name,
         },

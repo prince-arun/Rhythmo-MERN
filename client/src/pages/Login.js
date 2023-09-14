@@ -16,7 +16,7 @@ function Login() {
     try {
       dispatch(ShowLoading());
       const response = await axios.post(
-        "https://green-chiton-hem.cyclic.app/api/users/login",
+        "https://rhythmo-render-backend.onrender.com/api/users/login",
         user
       );
       dispatch(HideLoading());

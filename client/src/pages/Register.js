@@ -67,7 +67,7 @@ function Register() {
       }
 
       const response = await axios.post(
-        "https://green-chiton-hem.cyclic.app/api/users/register",
+        "https://rhythmo-render-backend.onrender.com/api/users/register",
         user
       );
       dispatch(HideLoading());
