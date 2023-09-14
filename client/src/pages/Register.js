@@ -66,7 +66,10 @@ function Register() {
         return;
       }
 
-      const response = await axios.post("/api/users/register", user);
+      const response = await axios.post(
+        "https://rhythmo-mern-78ccchy9o-prince-arun.vercel.app/api/users/register",
+        user
+      );
       dispatch(HideLoading());
 
       if (response.data.success) {

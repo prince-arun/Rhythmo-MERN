@@ -15,7 +15,10 @@ function Login() {
   const login = async () => {
     try {
       dispatch(ShowLoading());
-      const response = await axios.post("/api/users/login", user);
+      const response = await axios.post(
+        "https://rhythmo-mern-78ccchy9o-prince-arun.vercel.app/api/users/login",
+        user
+      );
       dispatch(HideLoading());
       if (response.data.success) {
         toast.success(response.data.message);
