@@ -12,26 +12,12 @@ function Register() {
     name: "",
     email: "",
     password: "",
+    age: 18, // Default age value
+    country: "", // Default country value
+    gender: "Male", // Default gender value
+    agreeToTerms: false, // Default checkbox value
   });
-  // const register = async () => {
-  //   try {
-  //     dispatch(ShowLoading());
-  //     const response = await axios.post("/api/users/register", user);
-  //     dispatch(HideLoading());
-  //     if (response.data.success) {
-  //       toast.success(response.data.message);
-  //       navigate("/login");
-  //     } else {
-  //       toast.error(response.data.message);
-  //     }
-  //   } catch (error) {
-  //     toast.error("Something Went wrong");
-  //     dispatch(HideLoading());
-  //     console.log(error);
-  //   }
-  // };
 
-  //--------------------------------------------------------
   const [passwordValidationError, setPasswordValidationError] = useState("");
 
   const register = async () => {
@@ -51,14 +37,6 @@ function Register() {
         return;
       }
 
-      // if (!isValidPassword(user.password)) {
-      //   // toast.error("Invalid password format");
-      //   setPasswordValidationError(
-      //     "should contain one capital letter, one special character, one Number, and  8 characters long."
-      //   );
-      //   dispatch(HideLoading());
-      //   return;
-      // }
       const passwordErrors = validatePassword(user.password);
       if (passwordErrors.length > 0) {
         setPasswordValidationError(passwordErrors);
@@ -91,13 +69,6 @@ function Register() {
     return emailRegex.test(email);
   };
 
-  // Custom function to validate password format
-  // const isValidPassword = (password) => {
-  //   const passwordRegex =
-  //     /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-  //   return passwordRegex.test(password);
-  // };
-  // Custom function to validate password format
   const validatePassword = (password) => {
     const passwordErrors = [];
 
@@ -138,6 +109,71 @@ function Register() {
           onChange={(e) => setUser({ ...user, name: e.target.value })}
         />
         <input
+          type="number"
+          placeholder="Age"
+          value={user.age}
+          onChange={(e) => setUser({ ...user, age: e.target.value })}
+        />
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-evenly",
+          }}
+        >
+          <p>Gender : </p>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <input
+              type="radio"
+              name="gender"
+              value="Male"
+              label="Male"
+              checked={user.gender === "Male"}
+              onChange={(e) => setUser({ ...user, gender: e.target.value })}
+              style={{ paddingBottom: "0" }}
+            />{" "}
+            <label htmlFor="male">Male</label>
+          </div>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <input
+              type="radio"
+              name="gender"
+              value="Female"
+              checked={user.gender === "Female"}
+              onChange={(e) => setUser({ ...user, gender: e.target.value })}
+              style={{ paddingBottom: "0" }}
+            />{" "}
+            <label htmlFor="female">Female</label>
+          </div>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <input
+              type="radio"
+              name="gender"
+              value="Other"
+              checked={user.gender === "Other"}
+              onChange={(e) => setUser({ ...user, gender: e.target.value })}
+              style={{ paddingBottom: "0" }}
+            />{" "}
+            <label htmlFor="other">Other</label>
+          </div>
+        </div>
+
+        <select
+          name="country"
+          value={user.country}
+          onChange={(e) => setUser({ ...user, country: e.target.value })}
+          style={{
+            padding: "10px",
+            border: "1px solid #ccc", // Add a border style
+          }}
+        >
+          <option value="">Select Country</option>
+          <option value="USA">USA</option>
+          <option value="Canada">Canada</option>
+          {/* Add more options as needed */}
+        </select>
+
+        <input
           type="text"
           placeholder="Email"
           value={user.email}
@@ -149,9 +185,7 @@ function Register() {
           value={user.password}
           onChange={(e) => setUser({ ...user, password: e.target.value })}
         />
-        {/* {passwordValidationError && (
-          <div className="text-red-500">{passwordValidationError}</div>
-        )} */}
+
         {passwordValidationError.length > 0 && (
           <div className="text-red-500">
             <ul>
@@ -161,6 +195,28 @@ function Register() {
             </ul>
           </div>
         )}
+
+        <div>
+          <label
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <input
+              type="checkbox"
+              name="agreeToTerms"
+              checked={user.agreeToTerms}
+              onChange={(e) =>
+                setUser({ ...user, agreeToTerms: e.target.checked })
+              }
+              style={{ paddingBottom: "0" }}
+            />{" "}
+            I agree to the terms and conditions
+          </label>
+        </div>
+        {/* ... */}
         <button className="primary bg-primary" onClick={register}>
           Register
         </button>
