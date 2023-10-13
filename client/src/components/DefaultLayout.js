@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 
 function DefaultLayout({ children }) {
   const { user } = useSelector((state) => state.user);
+  console.log(user);
   const navigate = useNavigate();
   return (
     <div className="main">

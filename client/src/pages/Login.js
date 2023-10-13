@@ -4,6 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { HideLoading, ShowLoading } from "../redux/alertsSlice";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
+import Button from "react-bootstrap/Button";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Popover from "react-bootstrap/Popover";
 
 function Login() {
   const dispatch = useDispatch();
@@ -33,6 +36,20 @@ function Login() {
       console.log(error);
     }
   };
+
+  const popover = (
+    <Popover id="popover-basic">
+      <Popover.Header as="h3"></Popover.Header>
+      <Popover.Body>
+        <p>
+          <b>EMAIL : </b>steve@gmail.com
+        </p>
+        <p>
+          <b>PASSWORD : </b>Steve@9600
+        </p>
+      </Popover.Body>
+    </Popover>
+  );
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="flex flex-col gap-5 w-96 p-5">
@@ -56,6 +73,11 @@ function Login() {
         <Link to="/register" className="text-secondary underline">
           Not yet Registered ? Click Here To Signup
         </Link>
+        <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
+          <Button className="border bg-gray" variant="success">
+            Click to View Test Credentials
+          </Button>
+        </OverlayTrigger>
       </div>
       <div>
         <img
